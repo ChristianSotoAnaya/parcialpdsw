@@ -18,6 +18,7 @@ package edu.eci.pdsw.samples.managedbeans;
 import edu.eci.pdsw.samples.entities.Paciente;
 import edu.eci.pdsw.samples.services.ServiceFacadeException;
 import edu.eci.pdsw.samples.services.ServicesFacade;
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -28,7 +29,7 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean(name="beanReporteRankingPacientesBean")
 @SessionScoped
-public class ReporteRankingPacientesBean {
+public class ReporteRankingPacientesBean implements Serializable{
     
     static ServicesFacade sf=ServicesFacade.getInstance("applicationconfig.properties");
     
