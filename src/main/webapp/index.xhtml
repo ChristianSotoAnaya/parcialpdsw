@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Reportes de comentarios negativos</title>
     </h:head>
@@ -27,8 +28,20 @@
             
             Digite la cantidad de pacientes que desea ver
             <p:inputText value="#{beanReporteRankingPacientesBean.cantidad}"></p:inputText>
-            Digite el año a analisar
-            <p:inputText value="#{beanReporteRankingPacientesBean.periodo}"></p:inputText>
+            Escoja el año a analisar
+            <p:selectOneListbox id="basic" value="#{beanReporteRankingPacientesBean.periodo}">
+                <f:selectItem itemLabel="2016" itemValue="2016" />
+                <f:selectItem itemLabel="2015" itemValue="2015" />
+                <f:selectItem itemLabel="2014" itemValue="2014" />
+                <f:selectItem itemLabel="2013" itemValue="2013" />
+                <f:selectItem itemLabel="2012" itemValue="2012" />
+                <f:selectItem itemLabel="2011" itemValue="2011" />
+                <f:selectItem itemLabel="2010" itemValue="2010" />
+                <f:selectItem itemLabel="2009" itemValue="2009" />
+                <f:selectItem itemLabel="2008" itemValue="2008" />
+                <f:selectItem itemLabel="2007" itemValue="2007" />
+                <f:selectItem itemLabel="2006" itemValue="2006" />
+            </p:selectOneListbox>
 
             
             <p:commandButton value="Consultar" update="ConsultaPacientes" actionListener="#{beanReporteRankingPacientesBean.mostrar}"></p:commandButton>
