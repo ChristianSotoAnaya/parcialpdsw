@@ -61,7 +61,7 @@ public class ServicesJUnitTest {
         return DriverManager.getConnection("jdbc:h2:file:./target/db/testdb;MODE=MYSQL", "anonymous", "");        
     }
     
-    @Test
+    //@Test
     public void pruebaCeroTest() throws SQLException, ServiceFacadeException {
         //Insertar datos en la base de datos de pruebas, de acuerdo con la clase
         //de equivalencia correspondiente
@@ -89,6 +89,68 @@ public class ServicesJUnitTest {
         Assert.fail("Pruebas no implementadas aun...");
         
     }    
+    /*
+    Caso de equivalencia "Frontera" : revisar los pasientes del año actual
+    */
+    //@Test
+    public void pruebaCE1Test() throws SQLException, ServiceFacadeException {
+        //Insertar datos en la base de datos de pruebas, de acuerdo con la clase
+        //de equivalencia correspondiente
+        Connection conn=getConnection();
+        Statement stmt=conn.createStatement();  
+        
+        stmt.execute("INSERT INTO `PACIENTES` (`id`, `tipo_id`, `nombre`, `fecha_nacimiento`) VALUES (9876,'ti','Carmenzo','1995-07-10')");
+        stmt.execute("INSERT INTO `CONSULTAS` (`idCONSULTAS`, `fecha_y_hora`, `resumen`, `PACIENTES_id`, `PACIENTES_tipo_id`) VALUES (1262218,'2001-01-01 00:00:00','Gracias',9876,'ti')"); 
+        
+        
+        ResultSet rs=stmt.executeQuery("select count(*) from PACIENTES");
+        while (rs.next()){
+            System.out.println(">>>>"+rs.getInt(1));
+        }
+        
+        
+        conn.commit();
+        conn.close();
+	
+        //Realizar la operacion de la logica y la prueba
+        
+        ServicesFacade servicios=ServicesFacade.getInstance("h2-applicationconfig.properties");
+        servicios.topNPacientesPorAnyo(2, 2005);	
+        //assert ...
+        Assert.fail("Pruebas no implementadas aun...");
+        
+    }
+    /*
+    Caso de equivalencia "Normal" consular el primer paciente con mas consultas
+    */
+    //@Test
+    public void pruebaCE2Test() throws SQLException, ServiceFacadeException {
+        //Insertar datos en la base de datos de pruebas, de acuerdo con la clase
+        //de equivalencia correspondiente
+        Connection conn=getConnection();
+        Statement stmt=conn.createStatement();  
+        
+        stmt.execute("INSERT INTO `PACIENTES` (`id`, `tipo_id`, `nombre`, `fecha_nacimiento`) VALUES (9876,'ti','Carmenzo','1995-07-10')");
+        stmt.execute("INSERT INTO `CONSULTAS` (`idCONSULTAS`, `fecha_y_hora`, `resumen`, `PACIENTES_id`, `PACIENTES_tipo_id`) VALUES (1262218,'2001-01-01 00:00:00','Gracias',9876,'ti')"); 
+        
+        
+        ResultSet rs=stmt.executeQuery("select count(*) from PACIENTES");
+        while (rs.next()){
+            System.out.println(">>>>"+rs.getInt(1));
+        }
+        
+        
+        conn.commit();
+        conn.close();
+	
+        //Realizar la operacion de la logica y la prueba
+        
+        ServicesFacade servicios=ServicesFacade.getInstance("h2-applicationconfig.properties");
+        servicios.topNPacientesPorAnyo(2, 2005);	
+        //assert ...
+        Assert.fail("Pruebas no implementadas aun...");
+        
+    }
     
 
 }

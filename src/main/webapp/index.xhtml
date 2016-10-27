@@ -8,8 +8,31 @@
     </h:head>
     <h:body>
         <h1>Reportes de comentarios negativos</h1>
-        <h:form>
+        <h:form id="ConsultaPacientes">
+            <p:dataTable var="paciente" value="#{beanReporteRankingPacientesBean.listado}" rowKey="#{paciente.id}">
+        
+        <p:column headerText="Nombre">
+                        <h:outputText value="#{paciente.nombre}" />
+                    </p:column>
+        <p:column headerText="Cedula">
+            <h:outputText value="#{paciente.id}" />
+                    </p:column>
+        <p:column headerText="Numero de Consultas">
+            <h:outputText value="#{paciente.numConsultas}" />
+                    </p:column>
 
+    </p:dataTable>
+            
+         <p:panelGrid columns="2">
+            
+            Digite la cantidad de pacientes que desea ver
+            <p:inputText value="#{beanReporteRankingPacientesBean.cantidad}"></p:inputText>
+            Digite el año a analisar
+            <p:inputText value="#{beanReporteRankingPacientesBean.periodo}"></p:inputText>
+
+            
+            <p:commandButton value="Consultar" update="ConsultaPacientes" actionListener="#{beanReporteRankingPacientesBean.mostrar}"></p:commandButton>
+        </p:panelGrid>
         </h:form>
     </h:body>
 </html>

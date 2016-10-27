@@ -40,7 +40,7 @@ public class MyBatisDaoPaciente implements DAOPaciente{
 
     @Override
     public List<Paciente> loadTopNPatientsInAYear(int N, int year) {
-        throw new UnsupportedOperationException("No se ha implementado: loadTopNPatientsInAYear(int N, int year) en MyBatisDAOPaciente."); //To change body of generated methods, choose Tools | Templates.
+        return pmap.getNPacientes(N, year);
     }
 
     

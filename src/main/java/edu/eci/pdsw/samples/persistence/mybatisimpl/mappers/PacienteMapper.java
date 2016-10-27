@@ -16,12 +16,16 @@
  */
 package edu.eci.pdsw.samples.persistence.mybatisimpl.mappers;
 
+import edu.eci.pdsw.samples.entities.Paciente;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
 /**
  *
  * @author hcadavid
  */
 public interface PacienteMapper {
 
-    
+    public List<Paciente> getNPacientes(@Param("N") int N,@Param("year") int year);
     
 }

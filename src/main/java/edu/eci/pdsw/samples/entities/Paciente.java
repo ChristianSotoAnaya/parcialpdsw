@@ -84,6 +84,11 @@ public class Paciente {
     public void setConsultas(Set<Consulta> consultas) {
         this.consultas = consultas;
     }
+    
+    public int getNumConsultas() {
+        return consultas.size();
+    }
+
 
     @Override
     public String toString() {
